@@ -1,4 +1,4 @@
-# LPI-CCH
+# LPI-CNNCP
 LPI-CNNCP
 
 Predicting lncRNA-protein interactions with copy-padding trick and convolutional neural network. 
