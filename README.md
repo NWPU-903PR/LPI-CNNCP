@@ -12,11 +12,11 @@ Sample pair naming format:
 
 (1)Original sample pair：
 
-label+'$'+protein_tag+'$'+lncRNA_tag+'$'+protein_sequence+lncRNA_sequence
+label+'$'+protein_tag+'$'+lncRNA_tag+'$'+protein_sequence+'#'+lncRNA_sequence
 
 (2)Cut sample pairs：
 
-label+'$'+protein_tag+'$'+lncRNA_tag+'_(subsequence index)'+'$'+protein_subsequence+lncRNA_subsequence
+label+'$'+protein_tag+'$'+lncRNA_tag+'_(subsequence index)'+'$'+protein_subsequence+'#'+lncRNA_subsequence
 
 Usage:
 
