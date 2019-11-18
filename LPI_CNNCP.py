@@ -128,7 +128,7 @@ def Without_crop_LPI():
     len_pro = 1000
     len_lnc = 3500
     copy = False
-    train_file='/home/disk1/zhangxixi/2019 newwork/20190610/20190627/lnc_allbyseq_data.txt'
+    train_file='./RPI1446.txt'
     x_data1, x_data2, x_label = data_two_three_preprocess(train_file,len_pro,len_lnc,copy)
 
     x_label_1=x_label[:,1]
@@ -161,7 +161,7 @@ def Without_crop_LPI():
                 real_labels.append(0)
             else:
                 real_labels.append(1)
-        # with open('/home/disk1/zhangxixi/2019 newwork/20190318/newhybrid_data/data_4_7/expansion/test'+str(i)+'postive_label.txt','w') as f1:
+        # with open('./test'+str(i)+'postive_label.txt','w') as f1:
         #     for line in real_labels :
         #         f1.write(str(line)+'\n')
         train_label_new = []
@@ -246,11 +246,9 @@ def With_crop_LPI():
     for kk in range(10):
         print('The fold is:', kk)
         train1, train2, train_label = data_two_three_preprocess(
-            '/home/disk1/zhangxixi/2019 newwork/20190610/20190718/RPI2241CUT_10fold/CUT1/RPI2241_' + str(
-                kk) + '_train_cutdata.txt',len_pro,len_lnc,copy)
+            './RPI2241CUT_10fold/CUT1/RPI2241_' + str(kk) + '_train_cutdata.txt',len_pro,len_lnc,copy)
         test1, test2, test_label = data_two_three_preprocess(
-            '/home/disk1/zhangxixi/2019 newwork/20190610/20190718/RPI2241CUT_10fold/CUT1/RPI2241_' + str(
-                kk) + '_test_cutdata.txt',len_pro,len_lnc,copy)
+            './RPI2241CUT_10fold/CUT1/RPI2241_' + str(kk) + '_test_cutdata.txt',len_pro,len_lnc,copy)
         real_labels = []
         for val in test_label:
             if val[0] == 1:
@@ -315,8 +313,7 @@ def With_crop_LPI():
 
         app_test_label = []
         app_test_name = []
-        with open('/home/disk1/zhangxixi/2019 newwork/20190610/20190718/RPI2241CUT_10fold/CUT1/RPI2241_' + str(kk) + '_testdata.txt',
-                  'r') as f1:
+        with open('./RPI2241CUT_10fold/CUT1/RPI2241_' + str(kk) + '_testdata.txt','r') as f1:
             data_all = f1.readlines()
 
         for i in range(len(data_all)):
@@ -326,8 +323,7 @@ def With_crop_LPI():
         # print('app_test_label:',app_test_label)
 
         data_label_name = []
-        with open('/home/disk1/zhangxixi/2019 newwork/20190610/20190718/RPI2241CUT_10fold/CUT1/RPI2241_' + str(
-                kk) + '_test_cutdata.txt', 'r')as f2:
+        with open('./RPI2241CUT_10fold/CUT1/RPI2241_' + str(kk) + '_test_cutdata.txt', 'r')as f2:
             data3 = f2.readlines()
             for j in range(len(data3)):
                 data4 = data3[j].split('$')
@@ -396,7 +392,7 @@ def Predict_new_interactions():
     len_pro = 1000
     len_lnc = 3500
     copy = True
-    train1, train2, train_label = data_two_three_preprocess('/home/disk1/zhangxixi/2019 newwork/20190610/20190627/lnc_allbyseq_data.txt', len_pro, len_lnc, copy)
+    train1, train2, train_label = data_two_three_preprocess('./RPI1446.txt', len_pro, len_lnc, copy)
 
     protein = Input(shape=(train1.shape[1], train1.shape[2], 1))
     lncRNA = Input(shape=(train2.shape[1], train2.shape[2], 1))
@@ -436,7 +432,7 @@ def Predict_new_interactions():
 
     model.save('my_independent_model.h5')
     # Processing independent test set data
-    test1, test2, test_label = data_two_three_preprocess('/home/disk1/zhangxixi/2019 newwork/20190610/20190718/all_independentdata/human_independent_data.txt',len_pro,len_lnc,copy)
+    test1, test2, test_label = data_two_three_preprocess('./human_independent_data.txt',len_pro,len_lnc,copy)
     np.save('test1', test1)
     np.save('test2', test2)
     np.save('test_label', test_label)
@@ -455,7 +451,7 @@ def Predict_new_interactions():
 
     app_test_label = []
     app_test_name = []
-    with open('/home/disk1/zhangxixi/2019 newwork/20190610/20190718/all_independentdata/human_data.txt', 'r') as f1:
+    with open('./human_data.txt', 'r') as f1:
         data_all = f1.readlines()
 
     for i in range(len(data_all)):
@@ -465,8 +461,7 @@ def Predict_new_interactions():
     # print('app_test_label:',app_test_label)
 
     data_label_name = []
-    with open('/home/disk1/zhangxixi/2019 newwork/20190610/20190718/all_independentdata/human_independent_data.txt',
-              'r')as f2:
+    with open('./human_independent_data.txt','r')as f2:
         data3 = f2.readlines()
         for j in range(len(data3)):
             data4 = data3[j].split('$')
@@ -487,6 +482,9 @@ def Predict_new_interactions():
     print('loss1, accuracy1', loss1, accuracy1)
 
     test1_predict_prob = model.predict([test1, test2])
+    with open('./independent_predict.txt','w') as f1:
+        for line in test1_predict_prob:
+            f1.write(str(line)+'\n')
     test1_predict_label = np.argmax(test1_predict_prob, axis=1)
 
     test1_predict_realprob = test1_predict_prob[:, 1]
