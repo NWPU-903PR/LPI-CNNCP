@@ -20,16 +20,19 @@ The LPI-CNNCP is supported on Linux operating system python 3, Keras version=2.2
 File Example is an example of a program input file. The user needs to process the experimental data into a sample format in the Example file.
 
 If the sequence length of all experiment data is within a fixed length range, it can be processed according to file ./Example/Example_RPI1446 for convenient operation.
+
 Sample pair naming format:
+
 label+'$'+protein_tag+'$'+lncRNA_tag+'$'+protein_sequence+'#'+lncRNA_sequence.
 
 If the sequence length of the experiment data exceeds the fixed length range, it can be processed according to file ./Example/Example_RPI2241.
+
 Sample pair naming format:
+
 label+'$'+protein_tag+'$'+lncRNA_tag+'_(subsequence index)'+'$'+protein_subsequence+'#'+lncRNA_subsequence
 
 
 ## Execute Step
-
 1. Configure the hyperparameters(e.g. the filter number, filter size, pooling size, the neuron number of fully connected layer, strides and Dropout) and process data files as required.
 
 2.Run LPI-CNNCP by configuring the corresponding parameters in function Run_LPI_CNNCP_model in the LPI-CNNCP.py program file as needed.
