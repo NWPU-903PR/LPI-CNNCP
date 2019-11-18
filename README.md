@@ -33,7 +33,7 @@ label+'$'+protein_tag+'$'+lncRNA_tag+'_(subsequence index)'+'$'+protein_subseque
 
 
 ## Execute Step
-1. Configure the hyperparameters(e.g. the filter number, filter size, pooling size, the neuron number of fully connected layer, strides and Dropout) and process data files as required.
+1.Configure the hyperparameters(e.g. the filter number, filter size, pooling size, the neuron number of fully connected layer, strides and Dropout) and process data files as required.
 
 2.Run LPI-CNNCP by configuring the corresponding parameters in function Run_LPI_CNNCP_model in the LPI-CNNCP.py program file as needed.
 
