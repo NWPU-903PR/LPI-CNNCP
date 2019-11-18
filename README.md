@@ -48,11 +48,11 @@ Configuring Run_LPI_CNNCP_model(Y_crop_LPI=False, N_crop_LPI=False, Independent=
 
 (2) Evaluation model prediction performance
 
-1) perform 10 fold cross validation(without cut):
+1)perform 10 fold cross validation(without cut):
 
 Configuring Run_LPI_CNNCP_model(Y_crop_LPI=True, N_crop_LPI=False, Independent=False), then run LPI-CNNCP, the final evaluation metrics will be output.
 
-2) perform 10 fold cross validation(with cut):
+2)perform 10 fold cross validation(with cut):
 
 Configuring Run_LPI_CNNCP_model(Y_crop_LPI=False, N_crop_LPI=True, Independent=False), then run LPI-CNNCP, the final evaluation metrics will be output.
 
