@@ -10,7 +10,9 @@ The LPI-CNNCP is supported on Linux operating system python 3, Keras version=2.2
 
 ## Content
 ./LPI_CNNCP.py: the python code, it can be ran to reproduce our results.
-./LPI_feature.py: the python code, it can be used to generate feature coding matrices。
+
+./LPI_feature.py: the python code, it can be used to generate feature coding matrices.
+
 ./data.zip: the training, testing and independent testing dataset with sequence, pair name and label.
 
 
