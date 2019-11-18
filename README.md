@@ -1,5 +1,5 @@
 # LPI-CNNCP
-LPI-CNNCP
+
 
 LPI-CNNCP designs a copy-padding trick to turn the protein/RNA sequences with variable-length into the fixed-length sequences, letting them meet the input requirements of CNN model. Then, the high-order one-hot encoding way is used to transform the protein/RNA sequences into image-like inputs of non-independent for capturing the dependencies among amino acids (or nucleotides). In the end, these encoded protein/RNA sequences are feed into a convolutional neural network to predict the lncRNA-protein interactions.
 
