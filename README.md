@@ -25,26 +25,35 @@ Sample pair naming format:
 
 label+'$'+protein_tag+'$'+lncRNA_tag+'$'+protein_sequence+'#'+lncRNA_sequence.
 
+Example：
+1$3UZK-3$3UZK-A$MAHKKGLGSTRNG#GGUCAAGAUGGUA
+
 If the sequence length of the experiment data exceeds the fixed length range, it can be processed according to file ./Example/Example_RPI2241.
 
 Sample pair naming format:
 
 label+'$'+protein_tag+'$'+lncRNA_tag+'_(subsequence index)'+'$'+protein_subsequence+'#'+lncRNA_subsequence
 
+Example：
+1$2B63-B$2B63-R_1$MSDLANSEKYYDEDPYGFEDESAPITAE#CAGCACUGAUUGCGGUCGAGGUAGCUUGAUG
 
 ## Execute Step
 1.Configure the hyperparameters(e.g. the filter number, filter size, pooling size, the neuron number of fully connected layer, strides and Dropout) and process data files as required.
 
 2.Run LPI-CNNCP by configuring the corresponding parameters in function Run_LPI_CNNCP_model in the LPI-CNNCP.py program file as needed.
 
-(1)perform 10 fold cross validation(without cut):
+(1)predict a new lncRNA-protein pair
+
+Configuring Run_LPI_CNNCP_model(Y_crop_LPI=False, N_crop_LPI=False, Independent=True), then run LPI-CNNCP,the final predicted probability values are written into text formats(independent_predict.txt).
+
+(2)Evaluation model prediction performance
+
+1)perform 10 fold cross validation(without cut):
 
 Configuring Run_LPI_CNNCP_model(Y_crop_LPI=True, N_crop_LPI=False, Independent=False), then run LPI-CNNCP, the final evaluation metrics will be output.
 
-(2)perform 10 fold cross validation(with cut):
+2)perform 10 fold cross validation(with cut):
 
 Configuring Run_LPI_CNNCP_model(Y_crop_LPI=False, N_crop_LPI=True, Independent=False), then run LPI-CNNCP, the final evaluation metrics will be output.
 
-(3)predict a new lncRNA-protein pair
 
-Configuring Run_LPI_CNNCP_model(Y_crop_LPI=False, N_crop_LPI=False, Independent=True), then run LPI-CNNCP,the final predicted probability values are written into text formats(independent_predict.txt).
