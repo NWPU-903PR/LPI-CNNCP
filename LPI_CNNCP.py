@@ -379,8 +379,9 @@ def Predict_new_interactions():
     len_pro = 1000
     len_lnc = 3500
     copy = True
-    test1, test2, test_label = data_two_three_preprocess('/home/disk1/zhangxixi/2019 newwork/20190610/20190718/all_independentdata/human_independent_data.txt',len_pro, len_lnc, copy)
-    model = load_model('/home/disk1/zhangxixi/2019 newwork/20190610/20190718/LPI-CPHCNN/First revision/independent/best_model25.h5')
+    #A independent test file that has been cropped
+    test1, test2, test_label = data_two_three_preprocess('./human_independent_data.txt',len_pro, len_lnc, copy)
+    model = load_model(./LPI_CNNCP_model.h5')
     real_labels = []
     for val in test_label:
         if val[0] == 1:
@@ -390,7 +391,8 @@ def Predict_new_interactions():
 
     app_test_label = []
     app_test_name = []
-    with open('/home/disk1/zhangxixi/2019 newwork/20190610/20190718/all_independentdata/human_data.txt', 'r') as f1:
+    # original independent test file
+    with open('./human_data.txt', 'r') as f1:
         data_all = f1.readlines()
 
     for i in range(len(data_all)):
@@ -400,7 +402,8 @@ def Predict_new_interactions():
     # print('app_test_label:',app_test_label)
 
     data_label_name = []
-    with open('/home/disk1/zhangxixi/2019 newwork/20190610/20190718/all_independentdata/human_independent_data.txt','r')as f2:
+    #A independent test file that has been cropped
+    with open('./human_independent_data.txt','r')as f2:
         data3 = f2.readlines()
         for j in range(len(data3)):
             data4 = data3[j].split('$')
@@ -421,9 +424,9 @@ def Predict_new_interactions():
     print('loss1, accuracy1', loss1, accuracy1)
 
     test1_predict_prob = model.predict([test1, test2])
-    # with open('./independent_predict.txt','w') as f1:
-    #     for line in test1_predict_prob:
-    #         f1.write(str(line)+'\n')
+    with open('./independent_predict.txt','w') as f1:
+        for line in test1_predict_prob:
+            f1.write(str(line)+'\n')
     test1_predict_label = np.argmax(test1_predict_prob, axis=1)
 
     test1_predict_realprob = test1_predict_prob[:, 1]
