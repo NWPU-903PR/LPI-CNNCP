@@ -15,7 +15,8 @@ The LPI-CNNCP is supported on Linux operating system python 3, Keras version=2.2
 
 ./data.zip: the training, testing and independent testing dataset with sequence, pair name and label.
 
-./ LPI_CNNCP_model: the trained LPI_CNNCP model
+
+./ LPI_CNNCP_model: the trained LPI_CNNCP model.
 
 
 ## Users's Guide
